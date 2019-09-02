@@ -35,14 +35,14 @@
         image: b3log/solo //直接使用最新版本的solo镜像
         restart: always
         ports:
-          - "8080:8080" //如果要部署到线上的话，请改为"80:80"，同时修改下面的--listen_port=80
+          - "80:80" //如果要部署到线上的话，请改为"80:80"，同时修改下面的--listen_port=80
         environment: //此处配置solo跟mysql的连接设置，来源为上面启动的mysql容器，如果要用自己的mysql服务，那么请将mysql的servcie去掉
           RUNTIME_DB: "MYSQL"
           JDBC_USERNAME: "root"
           JDBC_PASSWORD: "adminadmin"
           JDBC_DRIVER: "com.mysql.jdbc.Driver"
           JDBC_URL: "jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC" //此处，因为solo跟mysql同为docker容器，所以可以直接使用容器名 + 容器端口来访问
-        command: --listen_port=8080 --server_scheme=http --server_host=www.liumapp.com //按照solo官方要求，在solo启动之初，配置solo的域名、端口，如果是本地测试的话，将host改为localhost即可
+        command: --listen_port=80 --server_scheme=http --server_host=www.kidcaoblog.com //按照solo官方要求，在solo启动之初，配置solo的域名、端口，如果是本地测试的话，将host改为localhost即可
     ````    
         
 * 启动命令
